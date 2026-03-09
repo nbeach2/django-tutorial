@@ -3,9 +3,9 @@
 {% block content %}
     {% for post in posts %}
         <article class="post">
-            <time class="date">published: {{ post.published_date }}</time>
+            <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p>{{ post.text|truncatechars:200 }}</p>
         </article>
     {% endfor %}
 {% endblock %}
